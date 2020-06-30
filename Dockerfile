@@ -4,11 +4,15 @@ FROM node:alpine
 # SPECIFY A WORKING DIRECTORY
 WORKDIR /usr/app
 
-# COPY FILES TO CONTAINER
-COPY ./ ./
+# COPY package.json TO CONTAINER
+COPY ./package.json ./
 
 # INSTALL DEPENDENCIES
 RUN npm install
+
+# THEN COPY EVERYTHING ELSE
+# SO CHANGES WILL NOT INVALID package.json CACHE
+COPY ./ ./
 
 # SET START COMMAND
 CMD ["npm", "start"]
