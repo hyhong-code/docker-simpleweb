@@ -1,8 +1,11 @@
-# Specify a base image
-FROM alpine
+# SPECIFY A BASE IMAGE
+FROM node:alpine
 
-# Install some dependencies
+# COPY FILES TO CONTAINER
+COPY ./ ./
+
+# INSTALL DEPENDENCIES
 RUN npm install
 
-# Set default command
+# SET START COMMAND
 CMD ["npm", "start"]
